@@ -14,7 +14,7 @@ contract Property is ERC721, ERC721URIStorage, Ownable {
 
     constructor(
         string memory name_,
-        strin memory symbol_,
+        string memory symbol_,
         uint256 fees_
     )ERC721(name_, symbol_){
         fees = fees_;
@@ -34,6 +34,14 @@ contract Property is ERC721, ERC721URIStorage, Ownable {
         if(constractBalance > 0) {
             payable(msg.sender).transfer(address(this).balance);
         }
+    }
+
+    //override function
+    function _burn(uint256 tokenId) internal override(ERC721, ERC721URIStorage){
+        super._burn(tokenId);
+    }
+    function tokenURI(uint256 tokenId)public view override(ERC721, ERC721URIStorage) returns (string memory){
+        return super.tokenURI(tokenId);
     }
        
 }
