@@ -24,7 +24,7 @@ module.exports = {
   networks: {
     goerli: {
       url: process.env.GOERLI_URL,
-      account: process.env.PRIVATE_KEY
+      accounts: [process.env.PRIVATE_KEY]
     }
   },
   etherscan: {
